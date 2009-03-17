@@ -2,7 +2,7 @@ package Acme::URM;
 use strict;
 use Data::Dumper;
 
-our $VERSION	= '0.01';
+our $VERSION	= '0.02';
 
 use constant	LAST		=> -1;
 use constant	THIS		=> -2;
@@ -165,7 +165,7 @@ Acme::URM - URM (unlimited register machine) emulation
 =head1 SYNOPSIS
 
   use Acme::URM;
-  
+
   my $rm  = Acme::URM->new();
   # program that summarize parameters given in R0,R1
   $urm->program(
@@ -182,7 +182,7 @@ Acme::URM - URM (unlimited register machine) emulation
                'J(0,0,7)',
                'T(1,0)',
                );
-  
+
   $urm->register( 0, 2, 2 );	# fill the registers
   my $res	= $urm->run();	# res must be 4
 
@@ -231,8 +231,7 @@ Program of URM is a finite list of URM instructions.
 
 Creates the URM machine object.
 
-=item B<program>
-=item B<program> new_instructions
+=item B<program> [new_instructions]
 
 New instructions are added to program if given.
 Returns reference to array with the current program of URM object
@@ -241,9 +240,7 @@ Returns reference to array with the current program of URM object
 
 Clears current program of URM object
 
-=item B<register> n
-=item B<register> n value
-=item B<register> n value values
+=item B<register> n [value [values]]
 
 Set up nth register with "value" if given.
 Returns value of nth register.
@@ -257,8 +254,7 @@ Clears current registers of URM object
 
 Clears current program & registers of URM object
 
-=item B<max_steps>
-=item B<max_steps> value
+=item B<max_steps> [value]
 
 Set up value of maximum steps for URM if given.
 Returns current values for maximum steps for URM.
